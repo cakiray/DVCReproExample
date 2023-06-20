@@ -35,21 +35,21 @@ stages:
       size: 2490
     params:
       params.yaml:
-        featurize.max_features: 100
-        featurize.ngrams: 1
+        featurize.max_features: 300
+        featurize.ngrams: 3
     outs:
     - path: data/features
       hash: md5
-      md5: f8f5cbc3188008a7542d02d63054d9d2.dir
-      size: 1556290
+      md5: 282b48b1425b0e2140604cd730e5b675.dir
+      size: 2654434
       nfiles: 2
   train:
     cmd: python src/train.py data/features model.pkl
     deps:
     - path: data/features
       hash: md5
-      md5: f8f5cbc3188008a7542d02d63054d9d2.dir
-      size: 1556290
+      md5: 282b48b1425b0e2140604cd730e5b675.dir
+      size: 2654434
       nfiles: 2
     - path: src/train.py
       hash: md5
@@ -63,20 +63,20 @@ stages:
     outs:
     - path: model.pkl
       hash: md5
-      md5: 9121243bffa2f8099f5a06855bc92111
-      size: 1671000
+      md5: 1801d7de1757a1910172fc44c4edfbf9
+      size: 1718054
   evaluate:
     cmd: python src/evaluate.py model.pkl data/features
     deps:
     - path: data/features
       hash: md5
-      md5: f8f5cbc3188008a7542d02d63054d9d2.dir
-      size: 1556290
+      md5: 282b48b1425b0e2140604cd730e5b675.dir
+      size: 2654434
       nfiles: 2
     - path: model.pkl
       hash: md5
-      md5: 9121243bffa2f8099f5a06855bc92111
-      size: 1671000
+      md5: 1801d7de1757a1910172fc44c4edfbf9
+      size: 1718054
     - path: src/evaluate.py
       hash: md5
       md5: e538db1a5c3bb59f954b642fb7d2af1e
@@ -84,19 +84,19 @@ stages:
     outs:
     - path: eval/importance.png
       hash: md5
-      md5: 73d8768c882dfdf1549c36ffc596cc5b
-      size: 29454
+      md5: d1cc1b1f5b8b003c2dc7e7650ffce79c
+      size: 35360
     - path: eval/live/metrics.json
       hash: md5
-      md5: 2db04cc9d5e1c64adb9e1e0780ec022b
-      size: 195
+      md5: 56a88e227ba3c826573523564a2ef46e
+      size: 196
     - path: eval/live/plots
       hash: md5
-      md5: e92ebc6a61f93ad2ba3ff6b985f28895.dir
-      size: 782300
+      md5: 8eb2907e7f4d1653a9b8d50686d6ffb0.dir
+      size: 727293
       nfiles: 4
     - path: eval/prc
       hash: md5
-      md5: c6fdf7016e0e0dd2482690c1fc010ba8.dir
-      size: 295659
+      md5: 6fb63e3fde88c4e4a7daa39e4b9de3d5.dir
+      size: 294936
       nfiles: 2
